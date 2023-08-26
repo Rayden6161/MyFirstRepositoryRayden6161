@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+   
+
+ <form>Select car:
+  <select name="cars" id="ChooseYourCar">
+  <option value="" >select your favorite car: </option>
+  <option value="Seat">seat</option>
+  <option value="Fiat">fiat</option>
+  <option value="Mercedez">mercedez</option>
+  <option value="Peugeot">peugeot</option>
+</select>
+<br>
+
+<label id="TextAfterChoose"></label>
+
+</form>
+
+</div>
+
+
+<script type="text/javascript">
+var Carelement = document.getElementById("ChooseYourCar");
+
+
+Carelement.addEventListener("change", (e) => {
+  var value = e.target.value;  //u nasu promenljivu smestamo vrednost odabrane stavke
+ 
+ 
+  if (value) {
+    document.getElementById("TextAfterChoose").textContent = `You Selected: ` + value; //ispisuje poruku plus vrednost u nasoj labeli...
+  } 
+  else {
+    document.getElementById("TextAfterChoose").textContent = ""; //u suprotnom tj ako nema vresnosti stavljamo "" zato jer smo u   <option value="" >select your favorite car: </option> stavili value=""...
+  }
+}
+
+);
+
+
+
+</script>
+
+
+</body>
+
+
+</html>

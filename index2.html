@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Površina kruga</title>
+
+</head>
+
+<body>
+     <h1>Area and circumference of a circle</h1>
+    
+    
+    <input type="text" id="inputZaPoluprecnik" />
+
+    <input type="button"  value="Izracunaj" onclick="areaOfCircle()"/>
+   
+
+
+<script>
+
+
+
+
+
+
+
+
+
+function areaOfCircle () {
+    var r  = document.getElementById("inputZaPoluprecnik").value; //u nasu promenljivu r smo spakovali vresnost koju smo prethodno uneli u input.
+if(r <= 0){
+    alert("morate uneti pozitivan broj!")
+}
+else{
+ alert("povrsina kruga je  " + (r * r * Math.PI)); //ovde smo mogli staviti i Math.pow(r,2) umesto r*r...   
+}
+};
+
+
+
+</script>
+</body>
+</html>
