@@ -1,0 +1,10 @@
+<!ELEMENT cars (car)*>
+<!ELEMENT car (manufacter|model|production-year|horsepower|consumption|price)*>
+<!ATTLIST car
+        id ID #IMPLIED>
+<!ELEMENT manufacter (#PCDATA)>
+        <!ELEMENT model (#PCDATA)>
+        <!ELEMENT production-year (#PCDATA)>
+        <!ELEMENT horsepower (#PCDATA)>
+        <!ELEMENT consumption (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
