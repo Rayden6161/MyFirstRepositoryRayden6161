@@ -1,0 +1,58 @@
+.root{
+-fx-background-color: #373435;
+}
+
+.label{-fx-text-fill :white;
+}
+
+.text-field{
+-fx-background-color: transparent;
+-fx-border-color: #FFFFFF;
+-fx-text-fill: white;
+}
+
+.text-field:hover, .text-field:focused{
+-fx-border-color: #75606F;
+/*znaci kad predjemo misom preko kontrole i kad je u fokusu ide ova stilizacija*/
+}
+
+#saveBtn #clearBtn{
+/*
+znaci ovo nam se veze za id vrednosti button kontrola a te vrednosti moraju biti definisane u fxml fajlu
+*/
+-fx-background-color:transparent;
+-fx-border-color:FFFFFF;
+
+/*-fx-font-weight:bold;
+-fx-font-size: 1.1em;*/
+
+-fx-text-fill:white;
+
+}
+
+#closeBtn{
+-fx-graphic: url('close_icon.png');
+-fx-background-color:transparent;
+-fx-border-width:0.0;
+}
+
+#closeBtn:hover{
+-fx-graphic: url('close_icon_hover.png');
+
+}
+
+#saveBtn:hover,#clearBtn:hover{
+-fx-border-color: #75606F;
+}
+
+#saveBtn:pressed, #clearBtn:pressed{
+-fx-border-color: #75606F;
+-fx-background-color:#75606F;
+}
+
+
+
+
+
+
+

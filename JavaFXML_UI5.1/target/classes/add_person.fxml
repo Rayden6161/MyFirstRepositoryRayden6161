@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--fxml ekstenzija sadrzi xml kod za javaFXUI i svaki fxml pocinje deklaracijom,koreni element  fxml dokumenta je glavni kontejner UI-a,za glavni kontejner cemo postaviti GRID PANE.-->
+
+<?import javafx.scene.layout.GridPane?>
+<!--za definisanje padding-a moramo unutar GridPane-a koristiti nekoliko pod-tagova(unutra u GridPaneu jos tagova...-->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<GridPane alignment="CENTER" hgap="5" vgap="5"
+          xmlns:fx="http://www.javafx.com/fxml" fx:controller="org.example.PersonController">
+
+    <padding>
+        <Insets bottom="15" left="15" right="15" top="15"/>
+    </padding>
+<!--    najbolje da se kontrole koje se dodaju smestaju unutar children elementa(podelementa).-->
+<!--Znaci ove kontrole nece biti sadrzane unutar gridpanea vec unutar children property-ja-->
+<!--    znaci koristili smo u javi kodu metodu getChildren() da bi smo dobili sve kontrole kontejnera-->
+<!-- prvo cemo gridu dodati zaglavlje     text="Add New Person"-->
+
+    <children>
+        <HBox alignment="TOP_RIGHT" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <children>
+                <Button fx:id="closeBtn" onAction="#closeForm"/>
+<!--                na pritisak closeBtn button aktivira se metoda kontrolera closeForm-->
+<!--                Ovo je onaj button koji smo namenili za zatvaranje jer smo u App ugasili dekoracije pa moramo sami da kreiramo -->
+            </children>
+        </HBox>
+</children>
+<!--    5.2 lekcija zakomentarisacemo Text podtag i zameniti ga sa Label jer je lakse stilizovati Label-->
+
+<!--    <Text text="Add New Person" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2">-->
+<!--<font>-->
+<!--    <Font size="30"/>-->
+<!--</font>-->
+<!--    </Text>-->
+
+
+    <Label text="Add New Person" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2">
+        <font>
+            <Font size="30"/>
+        </font>
+    </Label>
+<!--        nakon zaglavlja zelim da dodam 5 label i 5 textfield kontrola u okviru GridPanea-->
+<!--        tako da za svaki property od tipa person imam po jedno polje i jednu labelu a onda nakon-->
+<!--        tih parova zelimo da dadamo i button kontrole koja ce sluziti za cuvanje nove instance-->
+<!--        tipa Person kao i za uklanjanje teksta iz kontrole. save i delete valjda.-->
+
+    <Label text="First_name" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <Label text="Last_name" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <Label text="Email" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <Label text="Address" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <Label text="Country" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="firstName"/>
+<!--    znaci fx:id atribut mora imati iste vrednosti kao TextField polja u kontroleru da bi na taj nacin kontroler mogao da pristupi ovim poljima u UI-u-->
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="lastName"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="email"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="address"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="country"/>
+<!--znaci za svaku labelu smo definisali tekst(i to atributom text(unutar Label atribut))-->
+
+<!--sad dodajemo 2 buttona koja moraju biti jedan pored drugoga i zbog toga cemo koristiti HBOX kontejner.-->
+<!-- i taj HBox cemo smestiti unutar reda ove tabele.-->
+
+    <HBox alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="7">
+<!--        imamo poravnanje gore desno i pomocu ostala dva atributa postavljamo njegovu poziciju unutar grida.-->
+<children>
+    <Button mnemonicParsing="true" text="_Save" fx:id="saveBtn" onAction="#savePerson"/>
+<!--    znaci ovim na pritisak tastera aktivira se metoda u kontroleru-->
+<!--    ovaj # nam govori da je u pitanju metoda iz kontrolera.-->
+    <Button mnemonicParsing="true" text="_Clear" fx:id="clearBtn" onAction="#clearPerson"/>
+
+   <!-- Dodali smo fx:id jer smo u eksternom fajlu style.css u resources za selektor postavili #saveBtn i #clearBtn
+    i nad njima izvrsili stilizaciju.
+    Da bi sve ovo bilo moguce mora ici prefix fx a njega definisemo u atributu korenog elementa ovog fajla
+    znaci unutar <GridPane-a> pa imamo atribut  xmlns:fx="http://www.javafx.com/fxml"-->
+</children>
+
+    </HBox>
+</GridPane>
+<!--sada cemo ovu tekst kontrolu pozicionirati unutar grida.-->
+<!--Mi cemo ovu kontrolu dodati u celiju sa koordinatama 0 0 (ona je u celiji u koloni 0,red 0)-->
+<!--inace nasa tabela ce imati dve kolone(labela,tekst kontrola)...-->
+<!--mozemo definisati da nam se tekst definise preko dve kolone,u atributu GridPane.columnSpan=""...-->
