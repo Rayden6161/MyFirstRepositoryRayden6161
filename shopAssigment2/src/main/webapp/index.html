@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert buyer here</title>
+</head>
+<body>
+<pre>
+
+<h1>Add New buyer</h1>
+<form action="BuyersSaveServlet" method="post">
+    <table>
+        <tr><td>Name:</td><td><input type="text" name="name"/></td></tr>
+        <tr><td>Balance:</td><td><input type="text" name="balance"/></td></tr>
+
+        <tr><td colspan="2"><input type="submit" value="Save buyer"/></td></tr>
+    </table>
+</form>
+
+<br/>
+<a href="BuyersListServlet">view all buyers</a>
+
+
+
+
+
+    <h1>Add New products</h1>
+<form action="ProductsSaveServlet" method="post">
+    <table>
+        <tr><td>Label:</td><td><input type="text" name="label"/></td></tr>
+        <tr><td>Price:</td><td><input type="text" name="price"/></td></tr>
+          <tr><td>OnStock:</td><td><input type="number" name="onStock"/></td></tr>
+
+        <tr><td colspan="2"><input type="submit" value="Save Product"/></td></tr>
+    </table>
+</form>
+
+<br/>
+<a href="ProductsListServlet">view all Products</a>
+
+
+
+
+
+        <h1>Sale list:</h1>
+<form action="SalesSaveServlet" method="post">
+    <table>
+        <tr><td>BuyerID:</td><td><input type="text" name="buyer_id"/></td></tr>
+        <tr><td>ProductID:</td><td><input type="text" name="product_id"/></td></tr>
+          <tr><td>ProductAmount:</td><td><input type="text" name="product_amount"/></td></tr>
+
+        <tr><td colspan="2"><input type="submit" value="Save sales"/></td></tr>
+    </table>
+</form>
+
+<br/>
+<a href="ProductsListServlet">view all Products</a>
+    <a href="BuyersListServlet">view all Buyers</a>
+
+
+</pre>
+
+</body>
+</html>
