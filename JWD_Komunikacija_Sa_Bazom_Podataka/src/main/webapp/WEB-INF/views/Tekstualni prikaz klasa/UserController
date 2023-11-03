@@ -1,0 +1,40 @@
+package controllers;
+
+import model.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class UserController {
+
+    @GetMapping("/new_user")
+public ModelAndView newForm(){
+    ModelAndView mv =new ModelAndView();
+    mv.addObject("user",new User());
+    mv.setViewName("new_user");
+    return mv;
+}
+@PostMapping("/new_user")
+public ModelAndView  sum(@ModelAttribute("user")User user){
+        ModelAndView mv=new ModelAndView();
+    mv.addObject("first_name", user.getFirst_name());
+    mv.addObject("last_name", user.getLast_name());
+    mv.addObject("date_of_birth", user.getDate_of_birth());
+    mv.addObject("pid", user.getPid());
+    mv.addObject("email", user.getEmail());
+    mv.addObject("country", user.getCountry());
+    mv.addObject("city", user.getCity());
+    mv.addObject("postal", user.getPostal());
+
+    mv.setViewName("confirmation");
+    return mv;
+}
+
+
+
+
+
+}
