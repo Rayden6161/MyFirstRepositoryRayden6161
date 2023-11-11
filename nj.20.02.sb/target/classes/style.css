@@ -1,0 +1,32 @@
+.anchor-pane, .split-pane {
+    -fx-background-color: #373435;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.text-field, .button, .toggle-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #FFFFFF;
+    -fx-text-fill: white;
+}
+
+.text-field:hover, .text-field:focused, .table-cell:hover,.table-cell:focused, .toggle-button:hover, .toggle-button:focused {
+    -fx-border-color: #75606F;
+}
+
+#closeBtn {
+    -fx-graphic: url('close_icon.png');
+    -fx-background-color: transparent;
+    -fx-border-width: 0.0;
+}
+
+.button:hover {
+    -fx-border-color: #75606F;
+}
+
+.button:pressed {
+    -fx-border-color: #75606F;
+    -fx-background-color: #75606F;
+}

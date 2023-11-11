@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import model.Person?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.PersonController">
+    <children>
+        <SplitPane dividerPositions="0.1460843373493976" layoutX="239.0" layoutY="45.0" orientation="VERTICAL"
+                   prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <SplitPane dividerPositions="0.840829694323144" layoutX="71.0" layoutY="-60.0" prefHeight="55.2"
+                                   prefWidth="599.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <!--                                   odavde pocinjemo sa kreiranjem headera znaci u ovaj SplitPane-->
+
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                    <children>
+<!--                                        ovde stavljamo labelu u header Add or Delete Person-->
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.6"
+                                               prefWidth="438.4" text="Add or Delete Person" textAlignment="CENTER"
+                                               AnchorPane.bottomAnchor="0.0"
+                                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                               AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font name="Courier New Bold" size="24.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+<!--                                znaci u ovaj AnchorPane smo smestili header(Add or Delete Person-->
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                    <children>
+                                        <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#closeForm"
+                                                prefHeight="53.6"
+                                                prefWidth="105.6" AnchorPane.bottomAnchor="0.0"
+                                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                                AnchorPane.topAnchor="0.0">
+                                        </Button>
+<!--                                        ovaj button nam je iks(u produzetak headera)za izlazak iz prozora-->
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+<!--                znaci sve do ovde smo radili header (labela(nasloV),iks(izlazak iz prozora) i dimenzije(razno) headera.-->
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="294.0" prefWidth="551.0">
+                    <children>
+                        <SplitPane dividerPositions="0.41885007278020364" layoutX="229.0" layoutY="119.0"
+                                   prefHeight="337.6" prefWidth="551.2" AnchorPane.bottomAnchor="0.0"
+                                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <items>
+                                <AnchorPane>
+                                    <children>
+                                        <VBox spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<!--                                            vertikalno rasporedjujemo kontrole tj nas textfielde-ve-->
+                                            <children>
+                                                <VBox alignment="BOTTOM_CENTER" prefHeight="103.2" prefWidth="217.6">
+                                                    <children>
+                                                        <TextField fx:id="firstName" promptText="First name"/>
+                                                        <TextField fx:id="lastName" promptText="Last name"/>
+                                                        <TextField fx:id="email" promptText="Email"/>
+                                                    </children>
+                                                </VBox>
+
+                                                <HBox alignment="BOTTOM_LEFT" fillHeight="true">
+                                                    <children>
+
+                                                        <ToggleButton fx:id="male" mnemonicParsing="false"
+                                                                      styleClass="button" text="Male">
+                                                            <toggleGroup>
+                                                                <ToggleGroup fx:id="gender"/>
+<!--                                                                ovo je grupa ima veze sa enumeratorom-->
+                                                            </toggleGroup>
+                                                        </ToggleButton>
+                                                        <ToggleButton fx:id="female" mnemonicParsing="false"
+                                                                      styleClass="button" text="Female"
+                                                                      toggleGroup="$gender"/>
+<!--                                                        toggleGroup="$gender" znaci pripada grupi gender(Gender enumerator MALE FEMALE)-->
+
+                                                    </children>
+                                                </HBox>
+                                                <VBox>
+                                                    <children>
+                                                        <HBox alignment="CENTER_RIGHT">
+<!--                                                            ZNACI u ovaj HBox trpamo tri dugmeta ona donja.-->
+
+                                                            <children>
+                                                                <Button fx:id="saveBtn" mnemonicParsing="false"
+                                                                        onAction="#savePerson" text="Save Person"/>
+                                                                <Button fx:id="clearBtn" mnemonicParsing="false"
+                                                                        onAction="#clearPerson" text="Clear Form"/>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+<!--                                                                ovo su rastojanja izmedju donja 3 buttona-->
+                                                            </padding>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER_RIGHT">
+<!--                                                            skroz donje dugme sa leve strane-->
+                                                            <children>
+                                                                <Button fx:id="deleteBtn" mnemonicParsing="false"
+                                                                        onAction="#deletePerson"
+                                                                        text="Delete Table Row"/>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+<!--                                                razmak mozda i ivice zbog ovog Insets nisam siguran-->
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="301.0">
+                                    <children>
+                                        <TableView fx:id="personTableView" prefHeight="336.0" prefWidth="300.8"
+                                                   AnchorPane.bottomAnchor="0.0"
+                                                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                                   AnchorPane.topAnchor="0.0">
+                                            <columns>
+<!--                                                znaci ovo su nam nazivi kolona(horizontalni red na desnoj strani).-->
+                                                <TableColumn text="First Name" prefWidth="75.0">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="firstName"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn text="Last Name" prefWidth="75.0">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="lastName"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn text="Email" prefWidth="75.0">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="email"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn text="Gender" prefWidth="75.0">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="gender"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                            </columns>
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+<!--                                                    znaci preko ovoga vec smo uneli neke da kazem osobe sa podacima koje se nude u formi-->
+                                                    <Person email="jacob@smith.com" firstName="Jacob" gender="MALE"
+                                                            lastName="Smith"/>
+                                                    <Person email="isabella@johnson.com" firstName="Isabella"
+                                                            gender="FEMALE"
+                                                            lastName="Johnson"/>
+                                                    <Person email="ethan@williams.com" firstName="Ethan" gender="MALE"
+                                                            lastName="Williams"/>
+                                                    <Person email="emma@jones.com" firstName="Emma" gender="FEMALE"
+                                                            lastName="Jones"/>
+                                                </FXCollections>
+                                            </items>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
