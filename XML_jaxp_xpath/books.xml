@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<books>
+<book id="01" isbn="1234567">
+    <title>Peters Book</title>
+    <author>Peter</author>
+    <pages>123</pages>
+</book>
+<book id="02" isbn="5555555">
+    <title>Johns book</title>
+<author>John</author>
+    <pages>333</pages>
+</book>
+
+
+<book id="03" isbn="007007">
+<title>James book</title>
+<author>James</author>
+<pages>199</pages>
+</book>
+
+</books>

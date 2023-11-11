@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE books SYSTEM "books.dtd">
+
+<!--Dodali smo validaciju (books.dtd) koju smo kreirali jer u mainu je prikazivao gresku jer nema validacije -->
+<!--i pravio je problem prilikom parsiranja jer je tretirao prazna mesta kao elemente.-->
+
+<books>
+<book id="01" isbn="12345">
+    <author>Artur Clarke</author>
+    <title>Childhood's End</title>
+
+</book>
+<book id="02" isbn="67890">
+    <author>Wiliam Shakespeare</author>
+    <title>Merchant of Venice</title>
+
+</book>
+
+</books>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE books SYSTEM "books.dtd">
+<books>
+<book id="01" isbn="12345">
+    <title>Childhood's End</title>
+    <author>Artur Clarke</author>
+</book>
+<book id="2" isbn="67890">
+    <title>Merchant of Venice</title>
+<author>Wiliam Shakespeare</author>
+</book>
+
+</books>
