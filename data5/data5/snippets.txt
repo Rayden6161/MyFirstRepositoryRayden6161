@@ -1,0 +1,154 @@
+CREATE TABLE books (
+  book_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  cover VARCHAR(255),
+  release_date DATE
+)ENGINE=INNODB;
+
+-----------------------------------------
+public static ArrayList<Book> getBooksForAuthor(int authorId) {
+        ArrayList<Book> books = jdbi.withHandle(handle ->
+            handle.createQuery("SELECT b.* FROM books b JOIN authors_books ab ON b.book_id = ab.book_id WHERE ab.author_id = :authorId")
+                .bind("authorId", authorId)
+                .mapToBean(Book.class)
+                .list());
+
+        return books;
+    }
+------------------------------------------
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="author : ${authors}">
+            <td th:text="${author.author_id}"></td>
+            <td th:text="${author.first_name}"></td>
+            <td th:text="${author.middle_name}"></td>
+            <td th:text="${author.last_name}"></td>
+            <td>
+                <div class="btn-group">
+                    <a th:href="'/author/details/' + ${author.author_id}"
+                       class="btn btn-sm btn-primary">
+                        Details
+                    </a>
+                    <a th:href="'/author/edit/' + ${author.author_id}"
+                       class="btn btn-sm btn-warning">
+                        Edit
+                    </a>
+                    <a th:href="'/author/delete/' + ${author.author_id}"
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this author?')">
+                        Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+-----------------------------------------
+
+<div class="container mt-4">
+    <h1>Author Details</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Author Info</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td th:text="${author.author_id}"></td>
+                    </tr>
+                    <tr>
+                        <th>First Name</th>
+                        <td th:text="${author.first_name}"></td>
+                    </tr>
+                    <tr>
+                        <th>Middle Name</th>
+                        <td th:text="${author.middle_name}"></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td th:text="${author.last_name}"></td>
+                    </tr>
+                    <tr>
+                        <th>Birth Date</th>
+                        <td th:text="${author.born}"></td>
+                    </tr>
+                    <tr>
+                        <th>Death Date</th>
+                        <td th:text="${author.died}"></td>
+                    </tr>
+                    <tr>
+                        <th>Biography</th>
+                        <td th:text="${author.biography}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Published Books</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Cover</th>
+                        <th>Release Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.book_id}"></td>
+                        <td th:text="${book.title}"></td>
+                        <td th:text="${book.cover}"></td>
+                        <td th:text="${book.release_date}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+----------------------------------------------------------------
+<form method="post" action="/author/new">
+  <div class="form-group">
+    <label for="first_name">First Name:</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" required>
+  </div>
+  <div class="form-group">
+    <label for="middle_name">Middle Name:</label>
+    <input type="text" class="form-control" id="middle_name" name="middle_name">
+  </div>
+  <div class="form-group">
+    <label for="last_name">Last Name:</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" required>
+  </div>
+  <div class="form-group">
+    <label for="born">Born:</label>
+    <input type="date" class="form-control" id="born" name="born" required>
+  </div>
+  <div class="form-group">
+    <label for="died">Died:</label>
+    <input type="date" class="form-control" id="died" name="died">
+  </div>
+  <div class="form-group">
+    <label for="photo">Photo:</label>
+    <input type="file" class="form-control-file" id="photo" name="photo">
+  </div>
+  <div class="form-group">
+    <label for="biography">Biography:</label>
+    <textarea class="form-control" id="biography" name="biography" rows="5"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,8 @@
+kad udjemo na saajt imamo te snipete pa ako nam treba recimo tabela imamo automatski isformatiranu tabelu i pokazuje kako da formatiramo tabelu.
+Znaci sve sto nam je potrebno je da ubacimo css fajl imamo gotove css klase imenujemo tamo gde nam treba i onda cemo imati prikazan element
+ZNACI NEKO JE NAPISAO STILOVE I MI IH TU MOZEMO PRIMENITI.
+
+ZNACI MORAMO PREUZETI TAJ BOOTSTRAP. USTVARI IDEMO NA cdnjs.com  I TAMO PREUZMEMO STA NAM TREBA.
+Znaci ukucamo u search bar bootstrap onda u rezultatima nadjemo bootstrap i kliknemo na njega pa onda imamo rezultate i pronadjemo
+https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css   kliknemo na copy scipt tag </> na njega 
+
