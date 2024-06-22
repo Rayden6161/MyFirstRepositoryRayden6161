@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <!--sad hocemo da ubacimo bootstrap, znaci kucamo u google  bootstrap 4 css cdn  onda idemo kad
+    udjemo na taj link  onda trazimo CSS deo i kopiramo link koji je pod stavkom css i to cemo ovce prekopirati u <link> element-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Student Management</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <h1>List Students</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3">Add Student</a>
+<!--
+            znaci imamo @ ->link expression ,onda imamo bootstrapove ,nase dugme je primary ,small ,marginebottom je 3...
+-->
+
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <form th:action="@{/students/search}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="keyword">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Student First Name</th>
+            <th>Student Last Name</th>
+            <th>Student Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student: ${students}"> <!--model.addAttribute("students",studentService.getAllStudents());-->
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.email}"></td>
+
+            <td>
+                <a th:href="@{/students/edit/{id}(id=${student.id})}"
+                class="btn btn-primary">Update</a>
+<!--                posle addovanja za update ,idemo u kontroleru da pravimo metodu da hendluje ovaj request za update...-->
+                <!--znaci uzimamo id od modela (ovo iznad student:) valjda...-->
+                <a th:href="@{/students/{id}(id=${student.id})}"
+                   class="btn btn-danger">Delete</a>
+                <!--posle addovanja ovog buttona(crvene boje(btn-danger)) idemo da radimo metodu za nas request.
+                znaci u kontroleru cemo dodati handler metodu-->
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
